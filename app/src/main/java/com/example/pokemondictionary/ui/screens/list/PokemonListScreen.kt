@@ -45,7 +45,6 @@ fun PokemonListScreen(
             navController
 
         )
-
         is ListUiState.Error -> ErrorScreen(modifier)
     }
 }
@@ -124,7 +123,7 @@ fun ListItem(
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically, modifier = modifier
-            .clickable { navController.navigate("detail") }
+            .clickable { navController.navigate("detail/${listItemData.number}") }
     ) {
         Text(
             text = listItemData.number,

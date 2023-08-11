@@ -20,15 +20,20 @@ interface PokemonApiService {
     @GET("pokemon/{no}")
     suspend fun getPokemonDetail(
         @Path("no") no: Int,
-    )
+    ): PokemonDetailResponse
 }
 
 private const val BASE_URL =
     "https://pokeapi.co/api/v2/"
 
+/**
+ * レスポンスデータに未定義のキーがJSONに存在しても無視するように「ignoreUnknownKeys」をtrueに設定
+ */
+private val json = Json { ignoreUnknownKeys = true }
+
 @OptIn(ExperimentalSerializationApi::class)
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(Json.asConverterFactory("application/json".toMediaType()))
+    .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
     .baseUrl(BASE_URL).build()
 
 object PokemonApi {

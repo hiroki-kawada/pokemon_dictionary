@@ -1,5 +1,7 @@
 package com.example.pokemondictionary.di
 
+import com.example.pokemondictionary.domain.PokemonDetailUseCase
+import com.example.pokemondictionary.domain.PokemonDetailUseCaseImpl
 import com.example.pokemondictionary.domain.PokemonListUseCase
 import com.example.pokemondictionary.domain.PokemonListUseCaseImpl
 import dagger.Module
@@ -18,5 +20,11 @@ class UseCaseModule {
         return pokemonListUseCase
     }
 
+    @Provides
+    fun providePokemonDetailUseCase(
+        pokemonDetailUseCase: PokemonDetailUseCaseImpl
+    ): PokemonDetailUseCase {
+        return pokemonDetailUseCase
+    }
 
 }

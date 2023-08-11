@@ -9,10 +9,13 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.example.pokemondictionary.ui.screens.detail.PokemonDetailScreen
+import com.example.pokemondictionary.ui.screens.detail.PokemonDetailViewModel
 import com.example.pokemondictionary.ui.screens.list.PokemonListScreen
 import com.example.pokemondictionary.ui.screens.list.PokemonListViewModel
 
@@ -42,8 +45,17 @@ fun PokemonDictionaryApp(modifier: Modifier = Modifier) {
                         )
 
                     }
-                    composable("detail") {
-
+                    composable(route = "detail/{number}",
+                        arguments = listOf(
+                            navArgument("number") { type = NavType.StringType }
+                        )
+                    ) { backStackEntry ->
+                        val number = backStackEntry.arguments?.getString("number") ?: ""
+                        val pokemonDetailViewModel: PokemonDetailViewModel = hiltViewModel()
+                        PokemonDetailScreen(
+                            pokemonDetailViewModel = pokemonDetailViewModel,
+                            number = number
+                        )
                     }
 
                 }

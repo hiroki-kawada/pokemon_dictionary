@@ -6,13 +6,13 @@ import com.example.pokemondictionary.data.repository.PokemonListRepository
 import javax.inject.Inject
 
 interface PokemonListUseCase {
-    suspend fun getListItemProfileDataList(offset: Int, limit: Int): PokemonListData
+    suspend fun getListItemPokemonData(offset: Int, limit: Int): PokemonListData
 }
 
 class PokemonListUseCaseImpl @Inject constructor(
     private val mPokemonListRepository: PokemonListRepository
 ) : PokemonListUseCase {
-    override suspend fun getListItemProfileDataList(offset: Int, limit: Int): PokemonListData {
+    override suspend fun getListItemPokemonData(offset: Int, limit: Int): PokemonListData {
         val list: MutableList<ListItemData> = mutableListOf()
         val listResult = mPokemonListRepository.getPokemonList(offset, limit)
         var number = offset
