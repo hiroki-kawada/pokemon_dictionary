@@ -35,7 +35,10 @@ import com.example.pokemondictionary.data.entity.PokemonListData
 import com.example.pokemondictionary.data.entity.TypeData
 
 /**
- * 詳細画面
+ * ポケモン詳細画面
+ *
+ * @param pokemonDetailViewModel ViewModel
+ * @param number ポケモン図鑑No
  */
 @Composable
 fun PokemonDetailScreen(
@@ -57,6 +60,13 @@ fun PokemonDetailScreen(
     }
 }
 
+/**
+ * ローディング画面
+ *
+ * @param number ポケモン図鑑No
+ * @param pokemonDetailViewModel ViewModel
+ *
+ */
 @Composable
 fun LoadingScreen(
     number: Int,
@@ -72,6 +82,11 @@ fun LoadingScreen(
     pokemonDetailViewModel.getPokemonDetailInfo(number)
 }
 
+/**
+ * 詳細情報表示画面
+ *
+ * @param pokemonDetailData ポケモン詳細情報
+ */
 @Composable
 fun ResultScreen(
     pokemonDetailData: PokemonDetailData,
@@ -98,6 +113,11 @@ fun ResultScreen(
 
 }
 
+/**
+ * イメージ表示
+ *
+ * @param imageUrl イメージURL
+ */
 @Composable
 fun ImageItem(
     imageUrl: String?
@@ -121,6 +141,12 @@ fun ImageItem(
     }
 }
 
+/**
+ * 名前表示
+ *
+ * @param no 図鑑No
+ * @param name ポケモン名
+ */
 @Composable
 fun NameItem(
     no: Int,
@@ -143,6 +169,12 @@ fun NameItem(
     }
 }
 
+/**
+ * 高さ、重さ表示
+ *
+ * @param height 高さ
+ * @param weight 重さ
+ */
 @Composable
 fun BodyItem(
     height: Int,
@@ -189,6 +221,12 @@ fun BodyItem(
     }
 }
 
+/**
+ * 特性表示
+ *
+ * @param name 特性名
+ * @param hiddenAbility 夢特性フラグ true：夢特性、false：通常特性
+ */
 @Composable
 fun AbilityItem(
     name: String,
@@ -211,6 +249,11 @@ fun AbilityItem(
     }
 }
 
+/**
+ * タイプ表示
+ *
+ * @param typeData タイプリスト
+ */
 @Composable
 fun TypeItem(
     typeData: List<TypeData>
@@ -235,6 +278,11 @@ fun TypeItem(
     }
 }
 
+/**
+ * タイプカード
+ *
+ * @param name タイプ名
+ */
 @Composable
 fun TypeCard(name: String) {
     Box(
@@ -259,6 +307,9 @@ fun TypeCard(name: String) {
 
 }
 
+/**
+ * エラー画面
+ */
 @Composable
 fun ErrorScreen(modifier: Modifier = Modifier) {
     Box(

@@ -1,6 +1,5 @@
 package com.example.pokemondictionary.data.entity
 
-import androidx.compose.runtime.Stable
 
 
 /**

@@ -9,6 +9,9 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 
+/**
+ * DI_Repositoryクラス関連
+ */
 @Module
 @InstallIn(ViewModelComponent::class)
 class RepositoryModule {

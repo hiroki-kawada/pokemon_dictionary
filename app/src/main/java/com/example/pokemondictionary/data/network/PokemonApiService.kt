@@ -9,7 +9,9 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-
+/**
+ * ポケモンAPI処理IF
+ */
 interface PokemonApiService {
     @GET("pokemon/")
     suspend fun getPokemonList(
@@ -23,6 +25,7 @@ interface PokemonApiService {
     ): PokemonDetailResponse
 }
 
+// BASEURL
 private const val BASE_URL =
     "https://pokeapi.co/api/v2/"
 
@@ -31,11 +34,17 @@ private const val BASE_URL =
  */
 private val json = Json { ignoreUnknownKeys = true }
 
+/**
+ * Retrofit生成
+ */
 @OptIn(ExperimentalSerializationApi::class)
 private val retrofit = Retrofit.Builder()
     .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
     .baseUrl(BASE_URL).build()
 
+/**
+ * retrofitService
+ */
 object PokemonApi {
     val retrofitService: PokemonApiService by lazy { retrofit.create(PokemonApiService::class.java) }
 }

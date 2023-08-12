@@ -1,6 +1,8 @@
 package com.example.pokemondictionary.data.entity
 
-
+/**
+ * ポケモン詳細画面表示データ
+ */
 data class PokemonDetailData(
     val name: String,//名前
     val no: Int,//ナンバー

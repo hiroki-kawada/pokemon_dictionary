@@ -1,14 +1,14 @@
 package com.example.pokemondictionary.domain
 
-import android.util.Log
 import com.example.pokemondictionary.data.entity.AbilityData
-import com.example.pokemondictionary.data.entity.ListItemData
 import com.example.pokemondictionary.data.entity.PokemonDetailData
-import com.example.pokemondictionary.data.entity.PokemonListData
 import com.example.pokemondictionary.data.entity.TypeData
 import com.example.pokemondictionary.data.repository.PokemonDetailRepository
 import javax.inject.Inject
 
+/**
+ * ポケモン詳細UseCase
+ */
 interface PokemonDetailUseCase {
     suspend fun getPokemonDetailData(number: Int): PokemonDetailData
 }
@@ -16,6 +16,13 @@ interface PokemonDetailUseCase {
 class PokemonDetailUseCaseImpl @Inject constructor(
     private val mPokemonDetailRepository: PokemonDetailRepository
 ) : PokemonDetailUseCase {
+
+    /**
+     * ポケモン詳細情報取得
+     *
+     * @param number ポケモン図鑑No
+     * @return ViewModel用に整形したポケモン詳細情報
+     */
     override suspend fun getPokemonDetailData(number: Int): PokemonDetailData {
         val detailResult = mPokemonDetailRepository.getPokemonDetailInfo(number)
         val abilityList: MutableList<AbilityData> = mutableListOf()

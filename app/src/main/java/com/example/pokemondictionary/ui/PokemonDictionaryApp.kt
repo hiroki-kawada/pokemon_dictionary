@@ -36,6 +36,7 @@ fun PokemonDictionaryApp(modifier: Modifier = Modifier) {
                     .padding(innerPadding)
             ) {
                 NavHost(navController = navController, startDestination = "list") {
+                    //一覧画面
                     composable("list") {
                         val pokemonListViewModel: PokemonListViewModel = hiltViewModel()
                         PokemonListScreen(
@@ -45,6 +46,7 @@ fun PokemonDictionaryApp(modifier: Modifier = Modifier) {
                         )
 
                     }
+                    //詳細画面
                     composable(route = "detail/{number}",
                         arguments = listOf(
                             navArgument("number") { type = NavType.StringType }

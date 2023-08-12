@@ -1,6 +1,5 @@
 package com.example.pokemondictionary.ui.screens.list
 
-import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -13,7 +12,9 @@ import kotlinx.coroutines.launch
 import java.io.IOException
 import javax.inject.Inject
 
-
+/**
+ * 一覧情報画面スタータス
+ */
 interface ListUiState {
     data class Success(val pokemonListData: PokemonListData) : ListUiState
     object Error : ListUiState
@@ -30,23 +31,30 @@ class PokemonListViewModel @Inject constructor(
     var listUiState: ListUiState by mutableStateOf(ListUiState.Loading)
         private set
 
-    init {
-        getPokemonList(0, 20)
-    }
-
+    /**
+     * ポケモン一覧情報取得
+     *
+     * @param offset 取得開始図鑑No
+     * @param limit 取得終了図鑑No
+     */
     fun getPokemonList(offset: Int, limit: Int) {
         listUiState = ListUiState.Loading
-        Log.d("kawakawa","一覧情報取得開始")
 
         viewModelScope.launch {
             listUiState = try {
                 val detailResult = mPokemonListUseCase.getListItemPokemonData(offset, limit)
-                Log.d("kawakawa","一覧情報取得完了")
 
                 ListUiState.Success(detailResult)
             } catch (e: IOException) {
                 ListUiState.Error
             }
         }
+    }
+
+    /**
+     * 初期処理
+     */
+    init {
+        getPokemonList(0, 20)
     }
 }

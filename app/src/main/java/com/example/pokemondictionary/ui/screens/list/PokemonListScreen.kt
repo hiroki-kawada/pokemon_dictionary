@@ -29,6 +29,8 @@ import com.example.pokemondictionary.data.entity.PokemonListData
 
 /**
  * 一覧画面
+ *
+ * @param pokemonListViewModel ViewModel
  */
 @Composable
 fun PokemonListScreen(
@@ -45,10 +47,14 @@ fun PokemonListScreen(
             navController
 
         )
+
         is ListUiState.Error -> ErrorScreen(modifier)
     }
 }
 
+/**
+ * ローディング画面
+ */
 @Composable
 fun LoadingScreen(modifier: Modifier = Modifier) {
     Box(
@@ -59,7 +65,11 @@ fun LoadingScreen(modifier: Modifier = Modifier) {
     }
 }
 
-
+/**
+ * 一覧情報表示画面
+ *
+ * @param pokemonListData ポケモン一覧情報
+ */
 @Composable
 fun ResultScreen(
     pokemonListData: PokemonListData,
@@ -117,6 +127,11 @@ fun ResultScreen(
     }
 }
 
+/**
+ * ポケモンリストアイテム
+ *
+ *  @param listItemData リストアイテム情報
+ */
 @Composable
 fun ListItem(
     listItemData: ListItemData, navController: NavController, modifier: Modifier = Modifier,
@@ -138,7 +153,9 @@ fun ListItem(
 
 }
 
-
+/**
+ * エラー画面
+ */
 @Composable
 fun ErrorScreen(modifier: Modifier = Modifier) {
     Box(
@@ -150,8 +167,10 @@ fun ErrorScreen(modifier: Modifier = Modifier) {
 }
 
 /**
- * リスト情報取得
+ * リスト情報取得用データ取得
+ *
  * @param url 取得時に必要な情報のURL
+ * @return 取得開始No,終了Noが格納されたlist
  */
 fun getListData(url: String): List<Int> {
     val mutableList = mutableListOf<Int>()

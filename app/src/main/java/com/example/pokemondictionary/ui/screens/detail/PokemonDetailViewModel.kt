@@ -14,6 +14,9 @@ import java.io.IOException
 import javax.inject.Inject
 
 
+/**
+ * 詳細情報画面スタータス
+ */
 interface DetailUiState {
     data class Success(val pokemonDetailData: PokemonDetailData) : DetailUiState
     object Error : DetailUiState
@@ -30,6 +33,11 @@ class PokemonDetailViewModel @Inject constructor(
     var detailUiState: DetailUiState by mutableStateOf(DetailUiState.Loading)
         private set
 
+    /**
+     * 詳細情報取得
+     *
+     * @param number 図鑑No
+     */
     fun getPokemonDetailInfo(number: Int) {
         detailUiState = DetailUiState.Loading
         viewModelScope.launch {
