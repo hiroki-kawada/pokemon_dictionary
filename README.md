@@ -34,3 +34,20 @@
 
 - @Composableを使用してコンポーズ可能な関数を作成しUIを構成
   - 再利用可能な小さいコンポーザブルを作成すると、アプリで使用するUI要素を簡単に構成できます。
+ 
+## スクショ
+・ライトモード：一覧画面
+
+<img alt="ライトモード：一覧画面" src="https://github.com/hiroki-kawada/pokemon_dictionary/assets/61892987/052527ec-71ce-442d-a7d8-d381d6260e42" width="45%">
+
+・ライトモード：詳細画面
+
+<img alt="ライトモード：詳細画面" src="https://github.com/hiroki-kawada/pokemon_dictionary/assets/61892987/2d90452f-18c2-4ebf-b001-03e2b32e5fd5" width="45%">
+
+・ダークモード：一覧画面
+
+<img alt="ダークモード：一覧画面" src="https://github.com/hiroki-kawada/pokemon_dictionary/assets/61892987/2ac81ece-3c90-4e2a-9b18-5389c4657c1f" width="45%">
+
+・ダークモード：詳細画面
+
+<img alt="ダークモード：詳細画面" src="https://github.com/hiroki-kawada/pokemon_dictionary/assets/61892987/3239b919-a485-4aa6-89cf-b0d2993a1252" width="45%">
